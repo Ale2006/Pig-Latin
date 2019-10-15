@@ -1,4 +1,4 @@
-piglatin;
+package piglatin;
 
 import java.util.Scanner;
 import java.util.Vector;
@@ -44,25 +44,35 @@ public class PigLatin {
     
     
     public static String [] traductor (String []array){
-    
+    String aux="";
         
     
         for (int i = 0; i < array.length ; i++) {
          
             if(esVocal(array[i].substring(0,1))){//  bloque para vocales
-                System.out.println("Empieza con vocal");
+            
+            array[i]=array[i]+"yay";
+            
+            System.out.print (array[i] + " ");
+            
             }
             
             else if (!esVocal(array[i].substring(0,1)) && !esVocal(array[i].substring(1,2))) { //bloque para las que empiezan con 2 consonantes
-                System.out.println("Tiene 2 consonantes");   
+                
+                aux= array[i].substring(2);
+                aux+= array[i].substring(0,2)+"ay";
+                System.out.print(aux + " ");
             }
             
             else if (!esVocal(array[i].substring(0,1))){  //bloque para las que empiezan con 1 consonante
-              System.out.println("Empieza con una Consonante");
+                aux= array[i].substring(1);
+                aux+= array[i].substring(0,1)+"ay";
+                System.out.print(aux + " ");
+                
             }
             
             
-            
+            System.out.print(" ");
             
         }
         
@@ -118,9 +128,10 @@ public class PigLatin {
         return false;
     }
     
-    
+  
     
     
     
     
 }
+
