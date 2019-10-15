@@ -1,8 +1,6 @@
 package piglatin;
 
 import java.util.Scanner;
-import java.util.Vector;
-
 
 public class PigLatin {
 
@@ -43,7 +41,7 @@ public class PigLatin {
     }
     
     
-    public static String [] traductor (String []array){
+    public static String [] traductor (String []array){  //funcion traductora
     String aux="";
         
     
@@ -82,8 +80,8 @@ public class PigLatin {
     }
    
     
-    public static String [] llenarArray(String[] arrayCadena, String cadena){
-    int j=0;
+    public static String [] llenarArray(String[] arrayCadena, String cadena){  // descompone la cadena en palabras individuales
+    int j=0;                                                                   //y las guarda en un array
     cadena= cadena.toLowerCase();
         
     for (int i = 0; i < arrayCadena.length; i++) {
@@ -103,7 +101,7 @@ public class PigLatin {
     }
     
     
-    public static int contadorPalabras(String cadena){
+    public static int contadorPalabras(String cadena){  //a partir de esta funcion se crea el array
     int palabras=1;
     
     for (int i = 0; i < cadena.length(); i++) {
@@ -116,7 +114,7 @@ public class PigLatin {
     
     
     
-    public static boolean esVocal(String x){
+    public static boolean esVocal(String x){   //funcion para validar vocales
     String vocales="aeiou";
     
         for (char l: vocales.toCharArray()) {
@@ -128,10 +126,7 @@ public class PigLatin {
         return false;
     }
     
-  
-    
-    
-    
+   
     
 }
 
