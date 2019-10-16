@@ -30,6 +30,7 @@ rhythm, ythm-rhay
 
 
 Links utilizados para este proyecto.
+https://repl.it/@Ale2006/Pig-Latin
 https://www.wikihow.com/Speak-Pig-Latin  //semantica gramatical
 https://www.aboutespanol.com/523-palabras-compuestas-en-ingles-que-debes-saber-a-k-1961083
 https://www.aboutespanol.com/523-palabras-compuestas-en-ingles-que-debes-saber-a-k-1961083
