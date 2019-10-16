@@ -25,18 +25,20 @@ public class PigLatin {
         
         else{
             
-        palabras= contadorPalabras(cadena);
+            palabras= contadorPalabras(cadena);
         
-        String [] arrayCadena= new String[palabras];
+            if (palabras==1) { 
+                cadena= unaSolaPalabra(cadena);
+                System.out.println(cadena);
+            }
         
+            else{
         
-            
-        arrayCadena= llenarArray(arrayCadena, cadena);
-        
-        arrayCadena=traductor(arrayCadena);
-         
-        mostrarArray(arrayCadena);
-        
+                String [] arrayCadena= new String[palabras];
+                arrayCadena= llenarArray(arrayCadena, cadena);
+                arrayCadena=traductor(arrayCadena);
+                mostrarArray(arrayCadena);
+            }
         }
         }
     }
@@ -48,13 +50,16 @@ public class PigLatin {
     
         for (int i = 0; i < array.length ; i++) {
          
-            if(esVocal(array[i].substring(0,1))){//  bloque para vocales
+         boolean primerLetra=esVocal(array[i].substring(0,1));   
+         boolean segundaLetra=esVocal(array[i].substring(1,2));
+            
+            if(primerLetra){//  bloque para vocales
             
             array[i]=array[i]+"yay";
             
             }
             
-            else if (!esVocal(array[i].substring(0,1)) && !esVocal(array[i].substring(1,2))) { //bloque para las que empiezan con 2 consonantes
+            else if (!primerLetra && !segundaLetra){   //bloque para las que empiezan con 2 consonantes
                 
                 aux= array[i].substring(2);
                 aux+= array[i].substring(0,2)+"ay";
@@ -62,22 +67,39 @@ public class PigLatin {
                 
             }
             
-            else if (!esVocal(array[i].substring(0,1))){  //bloque para las que empiezan con 1 consonante
+            else if (!primerLetra){  //bloque para las que empiezan con 1 consonante
                 aux= array[i].substring(1);
                 aux+= array[i].substring(0,1)+"ay";
                 array[i]=aux;
  
             }
             
-          
-            
         }
         
-       
-    
         return array;
     }
    
+    public static String unaSolaPalabra (String cadena){
+    
+       String empiezaVocal="^[aeiou]{1}.*";
+       String dosConsonantes="^[^aeiou]{2}.*";
+       
+       
+        if (cadena.matches(empiezaVocal)) {
+            cadena=cadena + "yay";
+           
+        }
+        else if (cadena.matches(dosConsonantes)) {
+            cadena= cadena.substring(2) + cadena.substring(0,2)+"ay";
+           
+        }
+        else{
+            cadena= cadena.substring(1) + cadena.substring(0,1)+"ay";
+            }
+    return cadena;
+    }
+    
+    
     
     public static String [] llenarArray(String[] arrayCadena, String cadena){
     int j=0;
@@ -139,5 +161,3 @@ public class PigLatin {
     
     
 }
-
-
