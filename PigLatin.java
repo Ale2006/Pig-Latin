@@ -6,11 +6,10 @@ public class PigLatin {
 
    
     public static void main(String[] args) {
+        //U: el traductor esta separado en funciones estaticas que no leen NI escriben de la pantalla
         Scanner scn= new Scanner(System.in);
         String cadena=" ";
-        int palabras=0;
-        
-        
+    
         while (cadena.length()!=0 && !cadena.isEmpty()) {            
         
         System.out.println("Bienvenido al traductor Ingles-PigLatin");
@@ -22,28 +21,18 @@ public class PigLatin {
             System.out.println("No ingreso ninguna palabra...");
             cadena=" ";
         }
-        
         else{
-            
-            palabras= contadorPalabras(cadena);
-        
-            if (palabras==1) { 
-                cadena= unaSolaPalabra(cadena);
-                System.out.println(cadena);
-            }
-        
-            else{
-        
-                String [] arrayCadena= new String[palabras];
-                arrayCadena= llenarArray(arrayCadena, cadena);
-                arrayCadena=traductor(arrayCadena);
-                mostrarArray(arrayCadena);
-            }
-        }
+            mostrarArray( traductor(cadena) );
         }
     }
     
-    
+    public static String[] traductor(String cadena) {
+       int palabras= contadorPalabras(cadena);  
+       String [] arrayCadena= new String[palabras];
+       arrayCadena= llenarArray(arrayCadena, cadena);
+       return traductor(arrayCadena);
+    }
+
     public static String [] traductor (String []array){
     String aux="";
         
