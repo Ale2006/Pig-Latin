@@ -1,0 +1,5 @@
+say something nice!
+Can I write a single letter word?
+UpperCase is not a problem for me.
+Hello, can you handle two non letter characters together?
+
