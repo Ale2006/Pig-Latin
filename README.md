@@ -20,13 +20,13 @@ Me quedaria para la proxima actualizacion, unificar las 2 funciones, un txt con 
 
 Palabras de ejemplo:
 
-hello,  ello-hay
-Pig Latin, ig-pay Atin-lay
-glove, ove-glay
-it, it-yay
-ultimate, ultimate-yay
-yellow ellow-yay
-rhythm, ythm-rhay
+hello,  ello-hay/
+Pig Latin, ig-pay Atin-lay/
+glove, ove-glay/
+it, it-yay/
+ultimate, ultimate-yay/
+yellow ellow-yay/
+rhythm, ythm-rhay/
 
 
 Links utilizados para este proyecto.
