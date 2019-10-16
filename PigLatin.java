@@ -69,12 +69,11 @@ public class PigLatin {
  
             }
             
-            
-            System.out.print(" ");
+          
             
         }
         
-        System.out.println("");
+       
     
         return array;
     }
