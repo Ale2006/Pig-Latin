@@ -28,7 +28,6 @@ public class PigLatin {
     
 public static String separarPalabras(String cadena){
 String paltraducidas="";
-String sololetras= "^[a-zA-Z ]*$";
 
     for (String palabra : cadena.split(" ")) {
         
