@@ -36,9 +36,14 @@ String paltraducidas="";
         
         if (!palabra.matches("^[a-zA-Z ]*$")) {
         
-            int pos= palabra.indexOf(','|'!'|'?'|'.'|':'|';'|'-'|'_');
+        int pos= palabra.indexOf(','|'!'|'?'|'.'|':'|';'|'-'|'_'|'"'|'('|')');
+        if(pos>1)
         paltraducidas+= traducirPalabra(palunamenos)+ ultimocaracter + " ";
+        
+        else
+        paltraducidas+=palabra + " ";
         }
+        
         
         else {
         paltraducidas+= traducirPalabra(palabra) + " ";
