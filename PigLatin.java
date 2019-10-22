@@ -40,7 +40,8 @@ public class PigLatin{
     
 public static String separarPalabras(String cadena, int menu){
 String paltraducidas="";
-Traductor objTraducido = new Traductor();
+AJeringoso objAJeringoso = new AJeringoso(); 
+APigLatin objAPigLatin= new APigLatin();
 
     if (cadena.isEmpty()) {
         return "Error";
@@ -52,28 +53,30 @@ Traductor objTraducido = new Traductor();
         String ultimocaracter=palabra.substring((palabra.length()-1),(palabra.length()));
         
         if (!palabra.matches("^[a-zA-Z ]*$")) {
-         
-      	  if(palabra.length()>2){
+        
+            if(palabra.length()>2){
         
             if (menu==1) {
-        	paltraducidas+= objTraducido.traducirJeri(palunamenos)+ ultimocaracter + " ";  
+                             
+                        paltraducidas+= objAJeringoso.traducirJeri(palunamenos)+ ultimocaracter + " ";  
             }
             else{
-      	        paltraducidas+= objTraducido.traducirPig(palunamenos)+ ultimocaracter + " ";
+                        
+                        paltraducidas+= objAPigLatin.traducirPig(palunamenos)+ ultimocaracter + " ";
             }
             }
         else{
-            paltraducidas+=palabra + " ";
+        paltraducidas+=palabra + " ";
         }
         }
         
         
         else {
         if (menu==1) {    
-        paltraducidas+= objTraducido.traducirJeri(palabra) + " ";
+        paltraducidas+= objAJeringoso.traducirJeri(palabra) + " ";
         }  
         else{
-        paltraducidas+= objTraducido.traducirPig(palabra) + " ";
+        paltraducidas+= objAPigLatin.traducirPig(palabra) + " ";
         }
         }
     }
