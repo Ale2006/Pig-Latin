@@ -3,31 +3,47 @@ package piglatin;
 import java.util.Scanner;
 
 
-public class PigLatin {
+public class PigLatin{
 
    
     public static void main(String[] args) {
         Scanner scn= new Scanner(System.in);
-		System.err.println("Bienvenido al traductor Ingles-PigLatin");
-
-		System.err.println("Ingrese el texto en ingles a traducir (vacio para terminar): ");
-
-		String cadena;
-                
-		while ((cadena= scn.nextLine())!=null && !cadena.isEmpty()) { 
+        String cadena;
+        int menu=0;
+		         
+		do{ 
 			
-                    mostrarArray( separarPalabras(cadena.toLowerCase()) );
-		    System.err.println("Ingrese el texto en ingles a traducir (vacio para terminar): ");
-		}
+                    System.err.println("Bienvenido al traductor Ingles-PigLatin y Español-Jeringoso");
 
-	 	mostrarArray( "Thanks for using the Pig Latin translator!" );
+                    System.err.println("Seleccione el idioma: ");
+                    System.err.println("1-Jeringoso ");
+                    System.err.println("2-PigLatin ");
+                    
+                    menu= scn.nextInt();
+                    scn.nextLine();
+		    System.err.println("Ingrese el texto en a traducir: ");
+                    cadena= scn.nextLine();
+                    
+                    mostrarPantalla( separarPalabras(cadena.toLowerCase(), menu) );
+		    
+                    System.err.print("Desea seguir traduciendo? (S/N): ");
+                    cadena= (scn.nextLine()).toLowerCase();
+                    
+                }while (cadena.charAt(0)!='n');
+
+	 	mostrarPantalla( "Thanks for using the Pig Latin translator!\n" );
 	}
 
 
 
     
-public static String separarPalabras(String cadena){
+public static String separarPalabras(String cadena, int menu){
 String paltraducidas="";
+Traductor objTraducido = new Traductor();
+
+    if (cadena.isEmpty()) {
+        return "Error";
+    }
 
     for (String palabra : cadena.split(" ")) {
         
@@ -35,18 +51,29 @@ String paltraducidas="";
         String ultimocaracter=palabra.substring((palabra.length()-1),(palabra.length()));
         
         if (!palabra.matches("^[a-zA-Z ]*$")) {
+         
+      	  if(palabra.length()>2){
         
-        int pos= palabra.indexOf(','|'!'|'?'|'.'|':'|';'|'-'|'_'|'"'|'('|')');
-        if(pos>1)
-        paltraducidas+= traducirPalabra(palunamenos)+ ultimocaracter + " ";
-        
-        else
-        paltraducidas+=palabra + " ";
+            if (menu==1) {
+        	paltraducidas+= objTraducido.traducirJeri(palunamenos)+ ultimocaracter + " ";  
+            }
+            else{
+      	        paltraducidas+= objTraducido.traducirPig(palunamenos)+ ultimocaracter + " ";
+            }
+            }
+        else{
+            paltraducidas+=palabra + " ";
+        }
         }
         
         
         else {
-        paltraducidas+= traducirPalabra(palabra) + " ";
+        if (menu==1) {    
+        paltraducidas+= objTraducido.traducirJeri(palabra) + " ";
+        }  
+        else{
+        paltraducidas+= objTraducido.traducirPig(palabra) + " ";
+        }
         }
     }
 
@@ -54,36 +81,10 @@ String paltraducidas="";
 
 return paltraducidas;
 }
-
-public static String traducirPalabra(String cadena){
-    String empiezaVocal="^[aeiou]{1}.*";
-    String dosConsonantes="^[^aeiou]{2}.*";
-    
-    
-                if (cadena.matches(empiezaVocal)){ 
-			cadena=cadena + "yay";
-
-		}
-		else if (cadena.matches(dosConsonantes)) {
-			cadena= cadena.substring(2) + cadena.substring(0,2)+"ay";
-
-		}
-		else{
-			cadena= cadena.substring(1) + cadena.substring(0,1)+"ay";
-		}
-		return cadena;
-	}
-
 	
-	public static boolean isLetra(char c) {
-		return Character.isLetter(c); //SEE: https://docs.oracle.com/javase/7/docs/api/java/lang/Character.html#isAlphabetic(int)
-	}
-
-	        
-	public static void mostrarArray(String palabras){
+public static void mostrarPantalla(String palabras){
 		          
             System.out.println(palabras);
 	    System.out.println("");
 	}
-
 }
