@@ -2,162 +2,93 @@ package piglatin;
 
 import java.util.Scanner;
 
-public class PigLatin {
+
+public class PigLatin{
 
    
     public static void main(String[] args) {
         Scanner scn= new Scanner(System.in);
-        String cadena=" ";
-        int palabras=0;
+        String cadena;
+        int menu=0;
+		         
+		do{ 
+			
+                    System.err.println("Bienvenido al traductor Ingles-PigLatin y Español-Jeringoso");
+
+                    System.err.println("Seleccione el idioma: ");
+                    System.err.println("1-Jeringoso ");
+                    System.err.println("2-PigLatin ");
+                    
+                    menu= scn.nextInt();
+                    scn.nextLine();
+		    System.err.println("Ingrese el texto en a traducir: ");
+                    cadena= scn.nextLine();
+                    
+                    mostrarPantalla( separarPalabras(cadena.toLowerCase(), menu) );
+		    
+                    System.err.print("Desea seguir traduciendo? (S/N): ");
+                    cadena= (scn.nextLine()).toLowerCase();
+                    
+                }while (cadena.charAt(0)!='n');
+
+	 	mostrarPantalla( "Thanks for using the Pig Latin translator!" );
+                mostrarPantalla( "Gracias por usar el traductor Jeringoso!" );
+	}
+
+
+
+    
+public static String separarPalabras(String cadena, int menu){
+String paltraducidas="";
+AJeringoso objAJeringoso = new AJeringoso(); 
+APigLatin objAPigLatin= new APigLatin();
+
+    if (cadena.isEmpty()) {
+        return "Error";
+    }
+
+    for (String palabra : cadena.split(" ")) {
         
+        String palunamenos=palabra.substring(0,(palabra.length()-1));
+        String ultimocaracter=palabra.substring((palabra.length()-1),(palabra.length()));
         
-        while (cadena.length()!=0 && !cadena.isEmpty()) {            
+        if (!palabra.matches("^[a-zA-Z ]*$")) {
         
-        System.out.println("Bienvenido al traductor Ingles-PigLatin");
-        System.out.print("Ingrese el texto en ingles a traducir: ");
-        cadena= scn.nextLine();
-            
-            
-        if (cadena.isEmpty()) {
-            System.out.println("No ingreso ninguna palabra...");
-            cadena=" ";
-        }
+            if(palabra.length()>2){
         
-        else{
-            
-            palabras= contadorPalabras(cadena);
-        
-            if (palabras==1) { 
-                cadena= unaSolaPalabra(cadena);
-                System.out.println(cadena);
+            if (menu==1) {
+                             
+                        paltraducidas+= objAJeringoso.traducirJeri(palunamenos)+ ultimocaracter + " ";  
             }
-        
             else{
-        
-                String [] arrayCadena= new String[palabras];
-                arrayCadena= llenarArray(arrayCadena, cadena);
-                arrayCadena=traductor(arrayCadena);
-                mostrarArray(arrayCadena);
+                        
+                        paltraducidas+= objAPigLatin.traducirPig(palunamenos)+ ultimocaracter + " ";
             }
-        }
-        }
-    }
-    
-    
-    public static String [] traductor (String []array){
-    String aux="";
-        
-    
-        for (int i = 0; i < array.length ; i++) {
-         
-         boolean primerLetra=esVocal(array[i].substring(0,1));   
-         boolean segundaLetra=esVocal(array[i].substring(1,2));
-            
-            if(primerLetra){//  bloque para vocales
-            
-            array[i]=array[i]+"yay";
-            
             }
-            
-            else if (!primerLetra && !segundaLetra){   //bloque para las que empiezan con 2 consonantes
-                
-                aux= array[i].substring(2);
-                aux+= array[i].substring(0,2)+"ay";
-                array[i]=aux;
-                
-            }
-            
-            else if (!primerLetra){  //bloque para las que empiezan con 1 consonante
-                aux= array[i].substring(1);
-                aux+= array[i].substring(0,1)+"ay";
-                array[i]=aux;
- 
-            }
-            
-        }
-        
-        return array;
-    }
-   
-    public static String unaSolaPalabra (String cadena){
-    
-       String empiezaVocal="^[aeiou]{1}.*";
-       String dosConsonantes="^[^aeiou]{2}.*";
-       
-       
-        if (cadena.matches(empiezaVocal)) {
-            cadena=cadena + "yay";
-           
-        }
-        else if (cadena.matches(dosConsonantes)) {
-            cadena= cadena.substring(2) + cadena.substring(0,2)+"ay";
-           
-        }
         else{
-            cadena= cadena.substring(1) + cadena.substring(0,1)+"ay";
-            }
-    return cadena;
-    }
-    
-    
-    
-    public static String [] llenarArray(String[] arrayCadena, String cadena){
-    int j=0;
-    cadena= cadena.toLowerCase();
-        
-    for (int i = 0; i < arrayCadena.length; i++) {
-                arrayCadena[i]="";
-            }
-        
-            for (char x : cadena.toCharArray()) {
-                
-                if (x!=' ') {
-                arrayCadena[j]+=x;   
-                }
-                else{
-                j++;
-                }
-            }
-    return arrayCadena;
-    }
-    
-    
-    public static int contadorPalabras(String cadena){
-    int palabras=1;
-    
-    for (int i = 0; i < cadena.length(); i++) {
-            if (cadena.charAt(i)==' ' && i<cadena.length()-1) {
-             palabras++;
-            }
-            }    
-    return palabras;
-    }
-    
-    
-    
-    public static boolean esVocal(String x){
-    String vocales="aeiou";
-    
-        for (char l: vocales.toCharArray()) {
-            
-            if (l== x.charAt(0)) {
-                return true;
-            }
+        paltraducidas+=palabra + " ";
         }
-        return false;
-    }
-    
-  
-    public static void mostrarArray(String[]cadena){
-    
-        for (String palabras : cadena) {
-            
-            System.out.print(palabras + " ");
-            
         }
-        System.out.println("");
+        
+        
+        else {
+        if (menu==1) {    
+        paltraducidas+= objAJeringoso.traducirJeri(palabra) + " ";
+        }  
+        else{
+        paltraducidas+= objAPigLatin.traducirPig(palabra) + " ";
+        }
+        }
     }
-    
-    
-    
+
+
+
+return paltraducidas;
+}
+	
+public static void mostrarPantalla(String palabras){
+		          
+            System.out.println(palabras);
+	    System.out.println("");
+	}
 }
