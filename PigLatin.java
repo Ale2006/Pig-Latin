@@ -31,7 +31,8 @@ public class PigLatin{
                     
                 }while (cadena.charAt(0)!='n');
 
-	 	mostrarPantalla( "Thanks for using the Pig Latin translator!\n" );
+	 	mostrarPantalla( "Thanks for using the Pig Latin translator!" );
+                mostrarPantalla( "Gracias por usar el traductor Jeringoso!" );
 	}
 
 
