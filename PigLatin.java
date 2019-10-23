@@ -40,12 +40,17 @@ public class PigLatin{
     
 public static String separarPalabras(String cadena, int menu){
 String paltraducidas="";
-AJeringoso objAJeringoso = new AJeringoso(); 
-APigLatin objAPigLatin= new APigLatin();
 
+	if(menu==1){
+	AJeringoso objatraducir = new AJeringoso(); 
+	   }
+	
+	else{
+	APigLatin objtraducir= new APigLatin();
+       	 }
     if (cadena.isEmpty()) {
         return "Error";
-    }
+	    }
 
     for (String palabra : cadena.split(" ")) {
         
@@ -56,14 +61,7 @@ APigLatin objAPigLatin= new APigLatin();
         
             if(palabra.length()>2){
         
-            if (menu==1) {
-                             
-                        paltraducidas+= objAJeringoso.traducirJeri(palunamenos)+ ultimocaracter + " ";  
-            }
-            else{
-                        
-                        paltraducidas+= objAPigLatin.traducirPig(palunamenos)+ ultimocaracter + " ";
-            }
+                        paltraducidas+= objtraducir.Traducir(palunamenos)+ ultimocaracter + " ";
             }
         else{
         paltraducidas+=palabra + " ";
