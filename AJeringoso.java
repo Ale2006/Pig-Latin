@@ -1,7 +1,8 @@
 package piglatin;
 
-public class AJeringoso {
-    public String Traducir (String cadena){
+public class AJeringoso extends AOtroIdioma{
+    
+    public String traducir (String cadena){
     String palTraducida="";
     boolean isQ=false;
     
@@ -28,9 +29,6 @@ public class AJeringoso {
                 }
             
         }
-        
-    
-    
     return palTraducida;
     }
 }
