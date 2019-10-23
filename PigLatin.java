@@ -58,7 +58,7 @@ public static String separarPalabras(String cadena, int menu){
          
        if(pos==cadena.length() && Character.isLetter(c)){
        
-       palabratraducida+=AllIdioma.traducir(palabra)+c;
+       palabratraducida+=AllIdioma.traducir(palabra);
        }  
        else if(!Character.isLetter(c) || c==' '){
            if (palabra.length()>=1) {
