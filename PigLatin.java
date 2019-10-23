@@ -70,12 +70,9 @@ String paltraducidas="";
         
         
         else {
-        if (menu==1) {    
-        paltraducidas+= objAJeringoso.traducirJeri(palabra) + " ";
-        }  
-        else{
-        paltraducidas+= objAPigLatin.traducirPig(palabra) + " ";
-        }
+        
+        paltraducidas+= objtraducir.Traducir(palabra) + " ";
+        
         }
     }
 
