@@ -38,52 +38,53 @@ public class PigLatin{
 
 
     
+    
 public static String separarPalabras(String cadena, int menu){
-String paltraducidas="";
 
-	if(menu==1){
-	AJeringoso objatraducir = new AJeringoso(); 
-	   }
-	
-	else{
-	APigLatin objtraducir= new APigLatin();
-       	 }
-    if (cadena.isEmpty()) {
-        return "Error";
-	    }
+ int pos=1;
+ String palabra="";
+ String palabratraducida="";
+    
+    AOtroIdioma AllIdioma= new AOtroIdioma();
 
-    for (String palabra : cadena.split(" ")) {
-        
-        String palunamenos=palabra.substring(0,(palabra.length()-1));
-        String ultimocaracter=palabra.substring((palabra.length()-1),(palabra.length()));
-        
-        if (!palabra.matches("^[a-zA-Z ]*$")) {
-        
-            if(palabra.length()>2){
-        
-                        paltraducidas+= objtraducir.Traducir(palunamenos)+ ultimocaracter + " ";
-            }
-        else{
-        paltraducidas+=palabra + " ";
-        }
-        }
-        
-        
-        else {
-        
-        paltraducidas+= objtraducir.Traducir(palabra) + " ";
-        
-        }
+    if (menu==1) {
+        AllIdioma= new AJeringoso();
     }
-
-
-
-return paltraducidas;
+    else if (menu==2) {
+        AllIdioma= new APigLatin();
+    }
+  
+     for (char c : cadena.toCharArray()) {
+         
+       if(pos==cadena.length() && Character.isLetter(c)){
+       
+       palabratraducida+=AllIdioma.traducir(palabra);
+       }  
+       else if(!Character.isLetter(c) || c==' '){
+           if (palabra.length()>=1) {
+               palabratraducida+=AllIdioma.traducir(palabra) +c; 
+               palabra="";
+           } else {
+               palabratraducida+=c;
+           }
+       }
+       else if (Character.isLetter(c)) {
+             palabra+=c;
+         }
+       else{
+       return "Error";
+       }
+       
+       pos++;
+     }
+     
+ return palabratraducida;
 }
-	
-public static void mostrarPantalla(String palabras){
+ 
+	public static void mostrarPantalla(String palabras){
 		          
             System.out.println(palabras);
 	    System.out.println("");
 	}
 }
+
