@@ -1,7 +1,7 @@
 package piglatin;
 
 public class AJeringoso {
-    public static String traducirJeri (String cadena){
+    public String Traducir (String cadena){
     String palTraducida="";
     boolean isQ=false;
     
