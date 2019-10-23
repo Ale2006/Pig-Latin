@@ -28,6 +28,14 @@ ultimate, ultimate-yay/
 yellow ellow-yay/
 rhythm, ythm-rhay/
 
+User Storie
+
+Como Alejandro es una persona muy curiosa y le contaron de un lenguaje nuevo, llamado Pig Latin
+Quiere un traductor de ingles a Pig Latin
+Para poder comunicarse con las personas que lo hablan.
+
+
+
 
 Links utilizados para este proyecto.
 https://repl.it/@Ale2006/Pig-Latin
