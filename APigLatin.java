@@ -1,7 +1,7 @@
 package piglatin;
 
 public class APigLatin {
-    public static String traducirPig(String cadena){
+    public String Traducir(String cadena){
     String empiezaVocal="^[aeiou]{1}.*";
     String dosConsonantes="^[^aeiou]{2}.*";
     
